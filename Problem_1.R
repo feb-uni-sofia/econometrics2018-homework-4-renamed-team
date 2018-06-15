@@ -3,7 +3,8 @@
 library(dplyr)
 
 ## Read the data
-houseWork <- read.csv('https://s3.eu-central-1.amazonaws.com/econometrics2018/data/houseWork.csv')
+houseWork <-
+  read.csv('https://s3.eu-central-1.amazonaws.com/econometrics2018/data/houseWork.csv')
 str(houseWork)
 
 ## a)
@@ -18,8 +19,14 @@ womanHours <- houseWork[houseWork$sex == 'f', 'hours']
 meanWomanHours <- mean(womanHours)
 
 ## c)
-houseWork <- within(houseWork, {female <- ifelse(houseWork$sex == 'f', TRUE, FALSE)})
-houseWork <- within(houseWork, {male <- ifelse(houseWork$sex == 'm', TRUE, FALSE)})
+houseWork <-
+  within(houseWork, {
+    female <- ifelse(houseWork$sex == 'f', TRUE, FALSE)
+  })
+houseWork <-
+  within(houseWork, {
+    male <- ifelse(houseWork$sex == 'm', TRUE, FALSE)
+  })
 ## d)
 fit <- lm(hours ~ female, data = houseWork)
 ## e)
